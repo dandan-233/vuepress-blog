@@ -16,9 +16,9 @@ location: Beijing
 git config --global user.name '名称'
 git config --global user.email 'git注册邮箱'
 ```
-使用 HTTPS 方式管理文件![Image](./../.vuepress/public/HTTPS.jpg)
+使用 HTTPS 方式管理文件![Image](./../.vuepress/public/202008/HTTPS.jpg)
 ## 问题 两个github账户直接使用HTTPS出错
-在部署文件(更目录deploy.sh)中直接使用HTTPS时发生错误![Image](./../.vuepress/public/HTTPSERROR.jpg)
+在部署文件(更目录deploy.sh)中直接使用HTTPS时发生错误![Image](./../.vuepress/public/202008/HTTPSERROR.jpg)
 错误提示
 `remote: Permission to dandan-233/dandan-233.github.io.git denied to yunpengGit.
 fatal: unable to access 'https://github.com/dandan-233/dandan-233.github.io.git/': The requested URL returned error: 403`
@@ -29,7 +29,7 @@ fatal: unable to access 'https://github.com/dandan-233/dandan-233.github.io.git/
 cd ~/.ssh
 ssh-keygen -t rsa -C "github注册邮箱"
 ```
-新生成的文件id_rsa_dan, id_rsa_dan.pub和默认生成的id_rsa, id_rsa.pub四份文件,分别对应两个账号
+新生成的文件id_rsa_dan, id_rsa_dan.pub和默认不自定义名称生成的id_rsa, id_rsa.pub四份文件,分别对应两个账号
 
 **配置ssh秘钥config**
 ```bash
@@ -62,14 +62,15 @@ cat 文件名称
 # 示例打开直接复制
 cat id_rsa_dan
 ```
+![sshkey](./../.vuepress/public/202008/sshkey.jpg)
 2. 到github添加秘钥目录
-![setting](./../.vuepress/public/sshkey-github1.jpg)
-![setting](./../.vuepress/public/sshkey-github2.jpg)
-![setting](./../.vuepress/public/sshkey-github3.jpg)
+![setting](./../.vuepress/public/202008/sshkey-github1.jpg)
+![setting](./../.vuepress/public/202008/sshkey-github2.jpg)
+![setting](./../.vuepress/public/202008/sshkey-github3.jpg)
 3. 复制秘钥添加秘钥title
-![setting](./../.vuepress/public/sshkey-github4.jpg)
+![setting](./../.vuepress/public/202008/sshkey-github4.jpg)
 
-添加新的秘钥
+## 把专用密钥添加到ssh-agent的高速缓存中
 ``` bash
 ssh-add id_rsa_dan
 ```
@@ -89,7 +90,7 @@ ssh-add -l
 ssh -T dan(config配置Host)
 ```
 
-git远程仓库链接地址
+## git远程仓库链接地址
 
 ```
 git@配置Host:用户名/仓库名.git
