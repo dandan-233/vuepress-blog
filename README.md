@@ -7,7 +7,8 @@
 ```bash
 yarn dev
 yarn build
-部署 sh deploy.sh
+# 部署到dandan-233
+sh deploy.sh
 ```
 ## 提交 github
 ```bash
