@@ -171,6 +171,9 @@ fun1()
 3
 let fun2 = fun.bind0(null, 1, 2)
 fun2()
+//输出
+三儿
+3
 
 ```
 
