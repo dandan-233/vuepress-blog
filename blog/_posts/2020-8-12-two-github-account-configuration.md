@@ -18,13 +18,14 @@ git config --global user.email 'git注册邮箱'
 ```
 使用 HTTPS 方式管理文件![Image](./../.vuepress/public/202008/HTTPS.jpg)
 ## 问题 两个github账户直接使用HTTPS出错
-在部署文件(更目录deploy.sh)中直接使用HTTPS时发生错误![Image](./../.vuepress/public/202008/HTTPSERROR.jpg)
-错误提示
+#### 在部署文件(更目录deploy.sh)中直接使用HTTPS时发生错误![Image](./../.vuepress/public/202008/HTTPSERROR.jpg)
+### 错误提示
 `remote: Permission to dandan-233/dandan-233.github.io.git denied to yunpengGit.
 fatal: unable to access 'https://github.com/dandan-233/dandan-233.github.io.git/': The requested URL returned error: 403`
 
 ## 设置SSH密钥 将SSH密钥添加到Github账户
-创建多个秘钥自定名称区分
+### 创建多个秘钥自定名称区分
+
 ``` bash
 cd ~/.ssh
 ssh-keygen -t rsa -C "github注册邮箱"
@@ -32,11 +33,13 @@ ssh-keygen -t rsa -C "github注册邮箱"
 新生成的文件id_rsa_dan, id_rsa_dan.pub和默认不自定义名称生成的id_rsa, id_rsa.pub四份文件,分别对应两个账号
 
 **配置ssh秘钥config**
+
 ```bash
 cd ~/.ssh
 # 创建config文件
 ```
-config内容
+### config内容
+
 ```
 # 个人github配置
 Host peng
@@ -54,7 +57,8 @@ Host dan
     Port 443
 ```
 
-添加ssh到github步骤
+## 添加ssh到github步骤
+
 1. 复制本地sshkey
 ```bash
 cd ~/.ssh
@@ -74,21 +78,53 @@ cat id_rsa_dan
 ``` bash
 ssh-add id_rsa_dan
 ```
-** 执行ssh-add时出现Could not open a connection to your authentication agent ** 使用命令
+执行ssh-add时出现Could not open a connection to your authentication agent 使用命令
+
 ```bash
 ssh-agent bash
 ```
 
-查看当前秘钥列表,
+### 查看当前秘钥列表,
+
 ``` bash
 ssh-add -l
 ```
 
-测试以确保Github识别密钥
+### 测试以确保Github识别密钥
 
 ```
 ssh -T dan(config配置Host)
 ```
+## 本地文件夹添加git配置(不需要全局git配置,在当前文件夹下单独配置git相关信息)
+
+### 查看git全局配置
+
+```bash
+git config --list
+```
+
+### 删除全局配置项(一般不需要删除,可能其他项目文件使用的是全局git配置文件)
+
+```bash
+git config --global --unset user.name
+```
+
+### 初始化git配置文件夹
+
+```bash
+cd ./项目文件夹  #到当前目录下执行
+git init
+```
+
+### 添加当前git配置
+
+```bash
+git config user.name '名称'
+git config user.email 'github注册邮箱'
+```
+
+
+
 
 ## git远程仓库链接地址
 
