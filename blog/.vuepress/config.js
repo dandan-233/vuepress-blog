@@ -2,7 +2,12 @@ module.exports = {
   title: '笔记',
   description: '日常学习笔记',
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
+  head: [
+    ['link', { rel: 'icon', href: '/bitbug_favicon.png' }]
+  ],
   themeConfig: {
+    lastUpdated: 'Last Updated',
+    smoothScroll: true,
     /**
      * Ref: https://vuepress-theme-blog.ulivz.com/#modifyblogpluginoptions
      */
@@ -20,6 +25,7 @@ module.exports = {
       {
         text: 'Tags',
         link: '/tag/',
+        tags: true
       },
     ],
     /**
@@ -48,4 +54,5 @@ module.exports = {
       ],
     },
   },
+  plugins: ['@vuepress/back-to-top', '@vuepress/nprogress']
 }
