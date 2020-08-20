@@ -20,13 +20,6 @@ centOS6.9
    
 2. 连接服务器
 
-3. yum安装必要的包（阿里云服务器内置 yum ）
-       yum -y install gcc gcc-c++ autoconf pcre-devel make automake
-       yum -y install wget httpd-tools vim
-       
-   
-       #有些包服务器已经内置
-   
 4. 安装nginx
    
    ```bash
@@ -83,7 +76,7 @@ centOS6.9
    /usr/share/nginx/html/index.html
    /var/cache/nginx
    /var/log/nginx
-      ```
+   ```
 
 6. nginx配置文件
        /etc/nginx/conf.d/default.conf
