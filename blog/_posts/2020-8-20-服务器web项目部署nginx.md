@@ -28,7 +28,7 @@ centOS6.9
    nginx -v
    ```
    
-   <span style="color:red;">安装 nginx 报错 信息: No package nginx available.</span>
+   <div style="color:red;">安装 nginx 报错 信息: No package nginx available.</div>
    解决: 添加EPEL软件源,再安装
    操作命令步骤:
    
@@ -79,12 +79,16 @@ centOS6.9
    ```
 
 6. nginx配置文件
-       /etc/nginx/conf.d/default.conf
-       /etc/nginx/nginx.conf
-
-7. 使用的基本命令
+   
+   ```
+/etc/nginx/conf.d/default.conf
+   /etc/nginx/nginx.conf
+   ```
+   
+6. 使用的基本命令
    <span style="color:red;"> nginx 启动报错:
    nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by protocol) </span>
+
    解决:
    vim  /etc/nginx/conf.d/default.conf
    注释掉  #listen       [::]:80 default_server;
@@ -156,4 +160,7 @@ centOS6.9
    ```
 
 9. 403 Forbidden错误记录
-       先检查当前访问服务器静态资源路径下,有没有相应的静态文件,静态文件目录(usr/share/nginx/html)
+   
+   ```
+   先检查当前访问服务器静态资源路径下,有没有相应的静态文件,静态文件目录(usr/share/nginx/html)
+   ```
