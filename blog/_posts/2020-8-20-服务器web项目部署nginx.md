@@ -7,7 +7,7 @@ author: pengpeng
 location: Beijing
 ---
 
-# 服务器部署文档 - windows 
+# 服务器部署文档 及ssh登录- windows 
 
 ## 服务器
 
@@ -17,32 +17,33 @@ centOS6.9
 
 1. 使用工具
    Xshell 6 连接服务器，Xftp 6 本地文件上传服务器（快捷入口（标准按钮，和 Xshell 图标一起的绿色图标，点击打开 Xftp），上传文件注意当前服务器文件夹所在目录）
-   
 2. 连接服务器
 
-4. 安装nginx
-   
+### nginx
+
+1. 安装nginx
+
    ```bash
    yum install nginx
    #查看版本
    nginx -v
    ```
-   
+
    <div style="color:red;">安装 nginx 报错 信息: No package nginx available.</div>
    解决: 添加EPEL软件源,再安装
    操作命令步骤:
-   
+
    - yum clean all
    - yum remove epel-release
    - yum update
    - yum install epel-release
    - yum install nginx -y
-   
-5. 查看nginx 安装目录
 
-      ```bash
-    rpm -ql nginx
-    #文件目录
+2. 查看nginx 安装目录
+
+   ```bash
+   rpm -ql nginx
+   #文件目录
    /etc/logrotate.d/nginx
    /etc/nginx
    /etc/nginx/conf.d
@@ -78,14 +79,14 @@ centOS6.9
    /var/log/nginx
    ```
 
-6. nginx配置文件
-   
-   ```
-/etc/nginx/conf.d/default.conf
+3. nginx配置文件
+
+   ```wiki
+   /etc/nginx/conf.d/default.conf
    /etc/nginx/nginx.conf
    ```
-   
-6. 使用的基本命令
+
+4. 使用的基本命令
    <span style="color:red;"> nginx 启动报错:
    nginx: [emerg] socket() [::]:80 failed (97: Address family not supported by protocol) </span>
 
@@ -128,39 +129,43 @@ centOS6.9
    #输入 :q 不保存退出 :wq 保存退出
    ```
 
-8. ssh服务器登录
-   ```bash
-   1.使用xshell在本地生成秘钥
-       id_rsa	私钥
-       id_rsa.pub  公钥
-   2.服务器sshd配置文件 /etc/ssh/sshd_config
-   3.配置选项(一般为去掉注释)
-       # 将以下这项去掉注释并改为yes，以启用密钥验证
-       PubkeyAuthentication yes
-   	# 指定公钥数据库文件
-   	AuthorsizedKeysFile .ssh/authorized_keys
-   4.在服务器~/下创建 .ssh文件夹
-   	直接打开xftp 创建
-   5.将本地的公钥复制到服务器.ssh目录下并且改名为 authorized_keys
-   	本地文件目录 C:\Users\Admin\.ssh
-   6.重启ssh
-   	#ubuntu系统
-       service ssh restart
-   
-       #debian系统
-       /etc/init.d/ssh restart
-   
-       # CentOS 使用以下命令
-       systemctl restart sshd.service
-           # systemctl: command not found
-           # 使用
-           service sshd restart
-   
-   7.使用ssh登录
-   ```
+### ssh服务器登录
 
-9. 403 Forbidden错误记录
-   
-   ```
-   先检查当前访问服务器静态资源路径下,有没有相应的静态文件,静态文件目录(usr/share/nginx/html)
-   ```
+```bash
+1.使用xshell在本地生成秘钥
+    id_rsa	私钥
+    id_rsa.pub  公钥
+2.服务器sshd配置文件 /etc/ssh/sshd_config
+3.配置选项(一般为去掉注释)
+    # 将以下这项去掉注释并改为yes，以启用密钥验证
+    PubkeyAuthentication yes
+	# 指定公钥数据库文件
+	AuthorsizedKeysFile .ssh/authorized_keys
+4.在服务器~/下创建 .ssh文件夹
+	直接打开xftp 创建
+5.将本地的公钥复制到服务器.ssh目录下并且改名为 authorized_keys
+	本地文件目录 C:\Users\Admin\.ssh
+6.重启ssh
+	#ubuntu系统
+    service ssh restart
+
+    #debian系统
+    /etc/init.d/ssh restart
+
+    # CentOS 使用以下命令
+    systemctl restart sshd.service
+        # systemctl: command not found
+        # 使用
+        service sshd restart
+
+7.使用ssh登录
+```
+
+### 访问报错
+
+1. 403 Forbidden错误记录
+
+```
+先检查当前访问服务器静态资源路径下,有没有相应的静态文件,静态文件目录(usr/share/nginx/html)
+```
+
